@@ -244,28 +244,38 @@ All subnets communicate with each other.
 4. Test all communication paths
 
 ---
+## Commands Used
 
-## commands used 
-- basic : 
-enable
-configure terminal 
-interface ... 
-ip address <ip> <mask>
-no shutdown 
-- static routing:
-ip route <destination-ip> <mask>  <next hop> 
-- saving config to RAM: 
-copy running-config startup-config
-copy run start
-write memory
-wr
-( any command of the above is valid ) 
+### Basic
+- `enable` — enter privileged EXEC mode
+- `configure terminal` — enter global configuration mode
+- `interface <type><number>` — select interface to configure (e.g., `g0/0`)
+- `ip address <ip> <mask>` — assign IP to interface
+- `no shutdown` — activate the interface
+> Tip: Always check interface status with `show ip interface brief`
 
+### Static Routing
+- `ip route <destination-network> <mask> <next-hop-ip>` — define static route
+> Tip: Verify with `show ip route`
+
+### Saving Configuration (RAM → NVRAM)
+- `copy running-config startup-config`
+- `copy run start`
+- `write memory`
+- `wr`
+> Any of the above commands is valid and saves the running configuration to persistent memory.
+> Tip: If you forget this, all changes are lost after `reload`.
+
+### Quick Reference
+- `show running-config` — view current configuration in RAM
+- `show startup-config` — view saved configuration in NVRAM
+- `show ip interface brief` — check IP and interface status
+- `reload` — reboot device (unsaved changes are lost)
 
 ## Dynamic Routing protocols
-RIP OSPT EIGRP ... 
 
-##  
+
+RIP OSPT EIGRP ... 
 
 ## Final Notes
 
